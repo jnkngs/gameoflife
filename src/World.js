@@ -27,7 +27,7 @@ function World(sizeX, sizeY) {
             row.forEach(function(cell) {
                 // get neighbor coordinates
                 cell.neighborCells.forEach(function(coordinates) {
-                    cell.setNeighbors(  me.grid[coordinates[0]][coordinates[1]] );
+                    cell.setAliveNeighbor(  me.grid[coordinates[0]][coordinates[1]] );
                 });
                 cell.tick();
                 // get alive cells from those

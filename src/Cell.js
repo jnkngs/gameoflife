@@ -5,15 +5,12 @@ function Cell(id, x,y) {
     this.isAlive = false;
     this.nextState = 'dead';
 
-    this.neighbors = [];
+    this.aliveNeighbors = [];
     this.neighborCells = [];
 
-    this.setNeighbors = function(neighbor) {
-        if(neighbor === undefined ) {
-            console.log('trap');
-        }
+    this.setAliveNeighbor = function(neighbor) {
         if(neighbor.isAlive === true) {
-            this.neighbors.push(neighbor);
+            this.aliveNeighbors.push(neighbor);
         }
     };
     this.setNeighborCells = function(coordinates) {
@@ -24,14 +21,15 @@ function Cell(id, x,y) {
         this.isAlive = !this.isAlive;
     }
     this.tick = function() {
-        if(this.neighbors.length < 2) {
+        if(this.aliveNeighbors.length < 2) {
             this.nextState = 'dead';
         }
-        else if(this.neighbors.length > 3 ) {
+        else if(this.aliveNeighbors.length > 3 ) {
             this.nextState = 'dead';
         }
-        else if(this.neighbors.length >= 2 && this.neighbors.length <= 3) {
+        else if(this.aliveNeighbors.length >= 2 && this.aliveNeighbors.length <= 3) {
             this.nextState = 'alive';
         }
+        this.aliveNeighbors = [];
     }
 };

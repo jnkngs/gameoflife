@@ -7,7 +7,7 @@ describe("Cell", function() {
         
         neighbor1 = new Cell('neighbor1', 0, 0);
         neighbor1.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor1);
+        cellUnderTest.setAliveNeighbor(neighbor1);
 
         cellUnderTest.tick();    // progress one game tick
         expect(cellUnderTest.nextState).toEqual('dead');
@@ -17,11 +17,11 @@ describe("Cell", function() {
 
         neighbor1 = new Cell('neighbor1', 0, 0);
         neighbor1.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor1);
+        cellUnderTest.setAliveNeighbor(neighbor1);
 
         neighbor2 = new Cell('neighbor2', 0,1);
         neighbor2.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor2);
+        cellUnderTest.setAliveNeighbor(neighbor2);
 
         cellUnderTest.tick();
         expect(cellUnderTest.nextState).toEqual('alive');
@@ -32,19 +32,19 @@ describe("Cell", function() {
 
         neighbor1 = new Cell('neighbor1', 0, 0);
         neighbor1.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor1);
+        cellUnderTest.setAliveNeighbor(neighbor1);
 
         neighbor2 = new Cell('neighbor2', 1, 0);
         neighbor2.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor2);
+        cellUnderTest.setAliveNeighbor(neighbor2);
 
         neighbor3 = new Cell('neighbor3', 2, 0);
         neighbor3.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor3);
+        cellUnderTest.setAliveNeighbor(neighbor3);
 
         neighbor4 = new Cell('neighbor4', 0, 1);
         neighbor4.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor4);
+        cellUnderTest.setAliveNeighbor(neighbor4);
 
         cellUnderTest.tick();
         expect(cellUnderTest.nextState).toEqual('dead');
@@ -54,15 +54,15 @@ describe("Cell", function() {
 
         neighbor1 = new Cell('neighbor1', 0, 0);
         neighbor1.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor1);
+        cellUnderTest.setAliveNeighbor(neighbor1);
 
         neighbor2 = new Cell('neighbor2', 1, 0);
         neighbor2.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor2);
+        cellUnderTest.setAliveNeighbor(neighbor2);
 
         neighbor3 = new Cell('neighbor3', 2, 0);
         neighbor3.isAlive = true;
-        cellUnderTest.setNeighbor(neighbor3);
+        cellUnderTest.setAliveNeighbor(neighbor3);
 
         cellUnderTest.tick();
         expect(cellUnderTest.nextState).toEqual('alive');
