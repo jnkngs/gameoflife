@@ -6,11 +6,17 @@ function Cell(id, x,y) {
     this.nextState = 'dead';
 
     this.neighbors = [];
-    this.setNeighbor = function(neighbor) {
+    this.neighborCells = [];
+
+    this.setNeighbors = function(neighbor) {
         if(neighbor.isAlive === true) {
             this.neighbors.push(neighbor);
         }
     };
+    this.setNeighborCells = function(coordinates) {
+        this.neighborCells = coordinates;
+    };
+    
     this.toggleState = function() {
         this.isAlive = !this.isAlive;
     }

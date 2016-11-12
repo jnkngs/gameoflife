@@ -10,7 +10,9 @@ $(document).ready(function() {
             var cellId = 'cell_' + x + '-' +y; 
             var cell = $("<div>", {'class': 'dead-cell', 'id': cellId});
             $("#gameworld").append(cell);
-            world.addCell(new Cell(cellId, x,y));
+            var cell = new Cell(cellId, x,y)
+            world.addCell(cell);
+            cell.setNeighborCells( world.getNeighborhood(cell) );
         }
     }
 
