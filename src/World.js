@@ -20,6 +20,15 @@ function World(sizeX, sizeY) {
     this.toggleCell = function(x,y) {
         this.grid[x][y].toggleState();
     };
+    this.getCellsByNextState = function(nextState) {
+        var results = [];
+        var me = this;
+        me.grid.forEach(function(row){
+           results.push.apply( results, row.filter(function(cell) {return cell.nextState===nextState}));
+        }); 
+        return results;
+
+    };
     this.processTick = function() {
         var cell;
         var me = this;
@@ -30,9 +39,6 @@ function World(sizeX, sizeY) {
                     cell.setAliveNeighbor(  me.grid[coordinates[0]][coordinates[1]] );
                 });
                 cell.tick();
-                // get alive cells from those
-                // cell to make decision about it's future
-                console.log('cell ' + cell.id + ': ' + cell.nextState);
             });
         });
     };

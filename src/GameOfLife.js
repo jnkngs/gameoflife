@@ -25,9 +25,8 @@ $(document).ready(function() {
             ticker = setInterval(function(){ 
                 tickCount++;
                 world.processTick();
-                /* 
-                update UI grid
-                */
+                var aliveCells = world.getCellsByNextState('alive');
+                var deadCells = world.getCellsByNextState('dead');
                 document.getElementById("ticks").innerHTML = tickCount;
              }, 500);
 
