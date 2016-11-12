@@ -1,0 +1,35 @@
+.button-row {
+    width: 90px;
+} 
+p {
+    font-size: 5px;
+    float: right;
+}
+button {
+    font-size: 5px;    
+}
+#gameworld{
+    clear: both;
+    width: 90px;
+    background-color: dimgray;
+    display: inline-block;
+    padding: 0.5px;
+}
+
+.dead-cell{
+    width: 2px;
+    height: 2px;
+    margin: 0.5px;
+    background-color: lightgray;
+    display: inline-block;
+    float: left;
+}
+
+.live-cell{
+    width: 2px;
+    height: 2px;
+    margin: 0.5px;
+    background-color: dimgray;
+    display: inline-block;
+    float: left;
+}
