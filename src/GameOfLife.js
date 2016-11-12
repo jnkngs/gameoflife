@@ -27,6 +27,23 @@ $(document).ready(function() {
                 world.processTick();
                 var aliveCells = world.getCellsByNextState('alive');
                 var deadCells = world.getCellsByNextState('dead');
+
+                aliveCells.forEach(function(cell) {
+                    var cellSelector = '#' + cell.id;
+                    if ($(cellSelector).hasClass('dead-cell') ) {
+                        $(cellSelector).removeClass('dead-cell')
+                        $(cellSelector).addClass('live-cell')
+                    }
+                }, this);
+                deadCells.forEach(function(cell) {
+                    var cellSelector = '#' + cell.id;
+                    if ($(cellSelector).hasClass('live-cell') ) {
+                        $(cellSelector).removeClass('live-cell')
+                        $(cellSelector).addClass('dead-cell')
+                    }
+                }, this);
+
+                world.reconfigureAll();
                 document.getElementById("ticks").innerHTML = tickCount;
              }, 500);
 

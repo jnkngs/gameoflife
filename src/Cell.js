@@ -31,5 +31,14 @@ function Cell(id, x,y) {
             this.nextState = 'alive';
         }
         this.aliveNeighbors = [];
-    }
+    };
+    this.reconfigure = function() {
+        if(this.nextState === 'alive') {
+            this.isAlive = true;
+        }
+        else if (this.nextState === 'dead') {
+            this.isAlive = false;
+        }
+        this.nextState = '';
+    };
 };

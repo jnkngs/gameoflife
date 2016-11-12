@@ -42,7 +42,13 @@ function World(sizeX, sizeY) {
             });
         });
     };
-
+    this.reconfigureAll = function() {
+        this.grid.forEach(function(row) {
+            row.forEach(function(cell) {
+                cell.reconfigure();
+            });
+        });
+    };
     this.getNeighborhood = function(cell) {
         function _calcCoordinates(delta) {
             var sum = [];
