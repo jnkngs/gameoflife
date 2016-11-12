@@ -22,8 +22,18 @@ function World(sizeX, sizeY) {
     };
     this.processTick = function() {
         var cell;
-        this.grid.forEach(function(cell) {
-            
+        var me = this;
+        me.grid.forEach(function(row) {
+            row.forEach(function(cell) {
+                // get neighbor coordinates
+                cell.neighborCells.forEach(function(coordinates) {
+                    cell.setNeighbors(  me.grid[coordinates[0]][coordinates[1]] );
+                });
+                cell.tick();
+                // get alive cells from those
+                // cell to make decision about it's future
+                console.log('cell ' + cell.id + ': ' + cell.nextState);
+            });
         });
     };
 
@@ -34,9 +44,15 @@ function World(sizeX, sizeY) {
             if(sum[0] < 0) {
                 sum[0] = this.sizeX -1;
             }
+            else if(sum[0] == this.sizeX) {
+                sum[0] = 0;
+            }
             sum[1] = cell.y + delta[1];
             if(sum[1] < 0) {
                 sum[1] = this.sizeY -1;
+            }
+            else if(sum[1] == this.sizeY ) {
+                sum[1] = 0;
             }
             return sum;
         }       

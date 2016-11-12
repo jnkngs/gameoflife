@@ -9,6 +9,9 @@ function Cell(id, x,y) {
     this.neighborCells = [];
 
     this.setNeighbors = function(neighbor) {
+        if(neighbor === undefined ) {
+            console.log('trap');
+        }
         if(neighbor.isAlive === true) {
             this.neighbors.push(neighbor);
         }
