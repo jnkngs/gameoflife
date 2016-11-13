@@ -24,10 +24,11 @@ $(document).ready(function() {
             $("#start").html('Stop');
             ticker = setInterval(function(){ 
                 tickCount++;
+                // handle current cell state
                 world.processTick();
-                var aliveCells = world.getCellsByNextState('alive');
-                var deadCells = world.getCellsByNextState('dead');
-
+                var aliveCells = world.getCellsByCurrentState(true);
+                var deadCells = world.getCellsByCurrentState(false);
+                
                 aliveCells.forEach(function(cell) {
                     var cellSelector = '#' + cell.id;
                     if ($(cellSelector).hasClass('dead-cell') ) {
@@ -42,7 +43,7 @@ $(document).ready(function() {
                         $(cellSelector).addClass('dead-cell')
                     }
                 }, this);
-
+                // Set cells for the next generation
                 world.reconfigureAll();
                 document.getElementById("ticks").innerHTML = tickCount;
              }, 500);

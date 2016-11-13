@@ -20,11 +20,11 @@ function World(sizeX, sizeY) {
     this.toggleCell = function(x,y) {
         this.grid[x][y].toggleState();
     };
-    this.getCellsByNextState = function(nextState) {
+    this.getCellsByCurrentState = function(isAlive) {
         var results = [];
         var me = this;
         me.grid.forEach(function(row){
-           results.push.apply( results, row.filter(function(cell) {return cell.nextState===nextState}));
+           results.push.apply( results, row.filter(function(cell) {return cell.isAlive===isAlive}));
         }); 
         return results;
 
