@@ -28,7 +28,31 @@ describe("World", function() {
         expect(neighborhood).toEqual([[29,29], [0,29],[ 1,29], [29,0], [1,0], [29,1], [0,1], [1,1]]);
     });
     it("should be able to update all the cells", function() {
-        // TBD 2
+
+        for (var y = 0; y < 30; y++) {
+            for(var x = 0; x < 30; x++) {
+                var cellId = 'cell_' + x + '-' +y; 
+                var cell = new Cell(cellId, x,y)
+                world.addCell(cell);
+                cell.setNeighborCells( world.getNeighborhood(cell) );
+            }
+        }
+        // Use "oscillator" as test item
+        world.toggleCell(1,0);
+        world.toggleCell(1,1);
+        world.toggleCell(1,2);
+        
+        world.processTick();
+        world.reconfigureAll();
+        
+        expect(world.grid[0][1].isAlive).toEqual(true);
+        expect(world.grid[1][1].isAlive).toEqual(true);
+        expect(world.grid[2][1].isAlive).toEqual(true);
+
+        expect(world.grid[1][0].isAlive).toEqual(false);
+        expect(world.grid[1][2].isAlive).toEqual(false);
+
+
     });
 
 });
