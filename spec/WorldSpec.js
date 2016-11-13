@@ -24,7 +24,7 @@ describe("World", function() {
         expect(neighborhood).toEqual([[0,0], [1,0],[ 2,0], [0,1], [2,1], [0,2], [1,2], [2,2]]);
         // ...and then the edge cases 
         cell2 = new Cell('test1', 0,0); // upper-left corner
-        var neighborhood = world.getNeighborhood(cell2);
+        neighborhood = world.getNeighborhood(cell2);
         expect(neighborhood).toEqual([[29,29], [0,29],[ 1,29], [29,0], [1,0], [29,1], [0,1], [1,1]]);
     });
     it("should be able to update all the cells", function() {
@@ -51,8 +51,6 @@ describe("World", function() {
 
         expect(world.grid[1][0].isAlive).toEqual(false);
         expect(world.grid[1][2].isAlive).toEqual(false);
-
-
     });
 
 });

@@ -8,9 +8,9 @@ $(document).ready(function() {
     for (var y = 0; y < 30; y++) {
         for(var x = 0; x < 30; x++) {
             var cellId = 'cell_' + x + '-' +y; 
-            var cell = $("<div>", {'class': 'dead-cell', 'id': cellId});
-            $("#gameworld").append(cell);
-            var cell = new Cell(cellId, x,y)
+            var cellDiv = $("<div>", {'class': 'dead-cell', 'id': cellId});
+            $("#gameworld").append(cellDiv);
+            var cell = new Cell(cellId, x,y);
             world.addCell(cell);
             cell.setNeighborCells( world.getNeighborhood(cell) );
         }
@@ -32,15 +32,15 @@ $(document).ready(function() {
                 aliveCells.forEach(function(cell) {
                     var cellSelector = '#' + cell.id;
                     if ($(cellSelector).hasClass('dead-cell') ) {
-                        $(cellSelector).removeClass('dead-cell')
-                        $(cellSelector).addClass('live-cell')
+                        $(cellSelector).removeClass('dead-cell');
+                        $(cellSelector).addClass('live-cell');
                     }
                 }, this);
                 deadCells.forEach(function(cell) {
                     var cellSelector = '#' + cell.id;
                     if ($(cellSelector).hasClass('live-cell') ) {
-                        $(cellSelector).removeClass('live-cell')
-                        $(cellSelector).addClass('dead-cell')
+                        $(cellSelector).removeClass('live-cell');
+                        $(cellSelector).addClass('dead-cell');
                     }
                 }, this);
                 // Set cells for the next generation

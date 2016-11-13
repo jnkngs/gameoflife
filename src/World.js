@@ -24,7 +24,7 @@ function World(sizeX, sizeY) {
         var results = [];
         var me = this;
         me.grid.forEach(function(row){
-           results.push.apply( results, row.filter(function(cell) {return cell.isAlive===isAlive}));
+           results.push.apply( results, row.filter(function(cell) {return cell.isAlive===isAlive;}));
         }); 
         return results;
 
